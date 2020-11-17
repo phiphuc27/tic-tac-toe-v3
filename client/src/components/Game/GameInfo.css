@@ -1,0 +1,28 @@
+.info {
+    margin-left: 2rem;
+    width: 310px;
+}
+
+.btn-group {
+    margin-bottom: 1em;
+}
+
+.btn-info {
+    background: white;
+    border: 2px solid #49a9f2;
+}
+
+.btn-info:hover,
+.btn-info:active {
+    color: white;
+    background: #49a9f2;
+}
+
+.btn-info:active {
+    background: #488ec4;
+}
+
+.status {
+    font-weight: bold;
+    font-size: 2rem;
+}

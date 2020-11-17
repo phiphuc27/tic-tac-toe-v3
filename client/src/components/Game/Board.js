@@ -8,8 +8,6 @@ import './Board.css';
 import Square from './Square';
 
 const Board = ({ game: { squares, xTurn, winner }, clickSquare }) => {
-    const status = `Next player: ${xTurn ? 'X' : 'O'}`;
-
     const handleClick = (row, col) => {
         if (winner || squares[row][col]) return;
 
@@ -23,8 +21,7 @@ const Board = ({ game: { squares, xTurn, winner }, clickSquare }) => {
     };
 
     return (
-        <div>
-            <div className='status'>{status}</div>
+        <div className='board'>
             {squares.map((e, i) => (
                 <div key={i} className='board-row'>
                     {squares[i].map((e, j) => (

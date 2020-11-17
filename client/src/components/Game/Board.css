@@ -1,14 +1,8 @@
 .board-row {
-  display: flex;
+    display: flex;
 }
 
 .board-row:after {
-  content: '';
-  display: table;
-}
-
-.status {
-  font-weight: bold;
-  font-size: 2rem;
-  margin-bottom: 1em;
+    content: '';
+    display: table;
 }

@@ -1,10 +1,11 @@
-import { CLICK_SQUARE, SET_WINNER, MOVE_JUMP } from '../actions/type';
+import { CLICK_SQUARE, SET_WINNER, MOVE_JUMP, NEW_GAME } from '../actions/type';
 
 const BOARD_SIZE = 20;
 
 const initialState = {
     squares: Array(BOARD_SIZE).fill(Array(BOARD_SIZE).fill(null)),
     history: [],
+    step: 0,
     xTurn: true,
     winner: null,
 };
@@ -20,6 +21,8 @@ const reducer = (state = initialState, action) => {
                         ? row.map((square, j) => (j === payload.col ? payload.name : square))
                         : row
                 ),
+                history: [...state.history.splice(0, state.step), payload],
+                step: (state.step += 1),
                 xTurn: !state.xTurn,
             };
         case SET_WINNER:
@@ -28,7 +31,22 @@ const reducer = (state = initialState, action) => {
                 winner: payload,
             };
         case MOVE_JUMP:
-            return state;
+            return {
+                ...state,
+                squares: payload.board,
+                step: payload.step,
+                xTurn: payload.step % 2 === 0,
+                winner: null,
+            };
+        case NEW_GAME:
+            return {
+                ...state,
+                squares: Array(BOARD_SIZE).fill(Array(BOARD_SIZE).fill(null)),
+                history: [],
+                step: 0,
+                xTurn: true,
+                winner: null,
+            };
         default:
             return state;
     }
