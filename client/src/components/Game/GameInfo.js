@@ -26,7 +26,7 @@ const GameInfo = ({ game: { winner, xTurn, history, squares, step }, newGame, mo
 
     return (
         <div className='info'>
-            <div className='btn-group'>
+            <div className='info__btn-group'>
                 <button type='button' className='btn btn-info' onClick={newGame}>
                     New Game
                 </button>

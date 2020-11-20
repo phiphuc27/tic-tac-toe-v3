@@ -4,11 +4,11 @@ h3 {
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 10rem;
 }
 
 h3 {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 a {
@@ -24,6 +24,16 @@ ul {
 button:focus,
 select:focus {
     outline: none;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 54px;
+    height: calc(100vh - 54px);
+    flex-direction: column;
 }
 
 .btn {
