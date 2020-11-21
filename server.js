@@ -8,7 +8,7 @@ const app = express();
 
 connectDB();
 
-app.use(Cors({ origin: true }));
+// app.use(Cors({ origin: true }));
 app.use(passport.initialize());
 app.use(express.json({ extended: false }));
 

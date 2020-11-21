@@ -7,18 +7,28 @@ import {
     LOGIN_SUCCESS,
     LOGOUT,
     ACCOUNT_DELETED,
+    REGISTER_START,
+    LOGIN_START,
+    USER_FETCHING,
 } from '../actions/type';
 
 const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: false,
-    loading: true,
+    loading: false,
     user: null,
 };
 
 const reducer = (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
+        case REGISTER_START:
+        case LOGIN_START:
+        case USER_FETCHING:
+            return {
+                ...state,
+                loading: true,
+            };
         case USER_LOADED:
             return {
                 ...state,

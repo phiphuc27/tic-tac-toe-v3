@@ -27,19 +27,19 @@ const GameInfo = ({ game: { winner, xTurn, history, squares, step }, newGame, mo
     return (
         <div className='info'>
             <div className='info__btn-group'>
-                <button type='button' className='btn btn-info' onClick={newGame}>
+                <button type='button' className='btn btn-game' onClick={newGame}>
                     New Game
                 </button>
                 <button
                     type='button'
-                    className={`btn btn-info ${step < 1 && 'disabled'}`}
+                    className={`btn btn-game ${step < 1 && 'disabled'}`}
                     onClick={() => moveJump(step - 1, history, squares)}
                 >
                     Undo
                 </button>
                 <button
                     type='button'
-                    className={`btn btn-info ${step >= history.length && 'disabled'}`}
+                    className={`btn btn-game ${step >= history.length && 'disabled'}`}
                     onClick={() => moveJump(step + 1, history, squares)}
                 >
                     Redo

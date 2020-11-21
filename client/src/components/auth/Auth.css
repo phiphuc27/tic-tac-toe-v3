@@ -1,0 +1,23 @@
+.authenticate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.6rem;
+}
+
+.authenticate h3 {
+    font-size: 3rem;
+}
+
+.authenticate p {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+}
+
+.authenticate p:last-child {
+    margin-top: 1em;
+}
+
+.authenticate a {
+    color: #1e90ff;
+}

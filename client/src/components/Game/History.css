@@ -15,10 +15,12 @@
 
 .history__menu {
     display: flex;
-    margin-bottom: 0.5em;
+    align-items: center;
+    margin-bottom: 1em;
 }
 
 .history__sort {
+    height: 2rem;
     padding: 0.2em 0.4em;
     border-radius: 5px;
     margin-left: 1em;
@@ -27,6 +29,7 @@
 .history__list {
     overflow: auto;
     height: 67vh;
+    font-size: 1.2rem;
 }
 
 .history__item {
@@ -48,19 +51,19 @@
 .radio:checked + .radio--label,
 .radio--label:hover {
     color: white;
-    background: rgb(139, 139, 139);
+    background: #8b8b8b;
 }
 
 .radio:active + .radio--label {
     color: white;
-    background: rgb(99, 99, 99);
+    background: #636363;
 }
 
 .radio--label {
     cursor: pointer;
     padding: 0.4em 1em;
     background-color: transparent;
-    border: 1px solid black;
+    border: 1px solid #636363;
     border-radius: 12px;
     transition-duration: 200ms;
 }

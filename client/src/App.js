@@ -10,6 +10,9 @@ import './App.css';
 import Navbar from './components/layout/Navbar';
 import Home from './components/layout/Home';
 import Game from './components/Game/';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
+import Profile from './components/profile/Profile';
 
 if (localStorage.getItem('token')) {
     setAuthToken(localStorage.getItem('token'));
@@ -27,6 +30,9 @@ function App({ loadUser }) {
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route exact path='/game' component={Game} />
+                    <Route exact path='/register' component={Register} />
+                    <Route exact path='/login' component={Login} />
+                    <Route exact path='/profile/:user_id' component={Profile} />
                 </Switch>
             </div>
         </>

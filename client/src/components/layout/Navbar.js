@@ -7,7 +7,7 @@ import { logout } from '../../actions/auth';
 import './Navbar.css';
 import logo from '../../logo.svg';
 
-const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, loading }, profile: { profile }, logout }) => {
     const guestLinks = (
         <ul>
             <li>
@@ -21,21 +21,34 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
     const authLinks = (
         <ul>
-            <li>
-                <Link to='/profile'>
-                    {user && (
-                        <>
-                            <img src={user.avatarURL} alt='avatar' />
-                            {user.first_name} {user.last_name}
-                        </>
-                    )}
-                </Link>
-            </li>
-            <li>
-                <a href='#!' onClick={() => logout()}>
-                    <i className='fas fa-sign-out-alt' /> <span className='hide-sm'>Logout</span>
-                </a>
-            </li>
+            {profile && (
+                <li className='account'>
+                    <div className='account-info'>
+                        <img src={profile.avatar} alt='avatar' />
+                        <span>
+                            {!profile.firstName && !profile.lastName
+                                ? profile.user.username
+                                : `${profile.firstName} ${profile.lastName}`}
+                        </span>
+                        <i className='fas fa-caret-down' />
+                    </div>
+                    <div className='account-menu'>
+                        <ul>
+                            <li>
+                                <Link to={`/profile/${profile.user._id}`}>
+                                    <i className='fas fa-user' /> Profile
+                                </Link>
+                            </li>
+                            <li>
+                                <a href='/' onClick={() => logout()}>
+                                    <i className='fas fa-sign-out-alt' />{' '}
+                                    <span className='hide-sm'>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            )}
         </ul>
     );
 
@@ -54,11 +67,13 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
 Navbar.propTypes = {
     auth: PropTypes.objectOf(PropTypes.any).isRequired,
+    profile: PropTypes.objectOf(PropTypes.any).isRequired,
     logout: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
     auth: state.auth,
+    profile: state.profile,
 });
 
 export default connect(mapStateToProps, { logout })(Navbar);

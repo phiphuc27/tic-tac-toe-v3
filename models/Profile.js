@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const ProfileSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users',
+        ref: 'user',
     },
     firstName: {
         type: String,
@@ -19,6 +19,9 @@ const ProfileSchema = mongoose.Schema({
     },
     birthday: {
         type: Date,
+    },
+    bio: {
+        type: String,
     },
     date: {
         type: Date,

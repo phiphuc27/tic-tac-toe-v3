@@ -10,12 +10,15 @@ const History = ({ game: { history, squares, step }, moveJump }) => {
     const [isAscending, toggleSort] = useState(true);
 
     const historyList = history.map((item, index) => (
-        <li
-            key={index + 1}
-            className='history__item'
-            onClick={() => moveJump(index + 1, history, squares)}
-        >
-            <input type='radio' id={index + 1} className='radio' name='history' />
+        <li key={index + 1} className='history__item'>
+            <input
+                type='radio'
+                id={index + 1}
+                className='radio'
+                name='history'
+                checked={step === index + 1}
+                onChange={() => moveJump(index + 1, history, squares)}
+            />
             <label htmlFor={index + 1} className='radio--label'>
                 {`${item.name.toUpperCase()} move to (${item.row + 1}, ${item.col + 1})`}
             </label>
@@ -39,8 +42,15 @@ const History = ({ game: { history, squares, step }, moveJump }) => {
             </div>
             <ol className='history__list'>
                 {!isAscending && historyList.sort((a, b) => b.key - a.key)}
-                <li className='history__item' onClick={() => moveJump(0, history, squares)}>
-                    <input type='radio' id={0} className='radio' name='history' defaultChecked />
+                <li className='history__item'>
+                    <input
+                        type='radio'
+                        id={0}
+                        className='radio'
+                        name='history'
+                        checked={step === 0}
+                        onChange={() => moveJump(0, history, squares)}
+                    />
                     <label htmlFor={0} className='radio--label'>
                         Go to game start
                     </label>

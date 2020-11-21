@@ -4,25 +4,31 @@
 }
 
 .info__btn-group {
+    display: flex;
     margin-bottom: 1em;
 }
 
-.btn-info {
+.btn-game {
+    color: black;
     background: white;
-    border: 2px solid #49a9f2;
+    border: 2px solid #1e90ff;
 }
 
-.btn-info:hover,
-.btn-info:active {
+.btn-game:hover,
+.btn-game:active {
     color: white;
-    background: #49a9f2;
+    background: #1e90ff;
 }
 
-.btn-info:active {
+.btn-game:active {
     background: #488ec4;
 }
 
 .status {
     font-weight: bold;
     font-size: 2rem;
+}
+
+.status__text {
+    margin-bottom: 0;
 }

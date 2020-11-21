@@ -1,4 +1,5 @@
 h1,
+h2,
 h3 {
     font-family: 'Nunito', sans-serif;
 }
@@ -38,6 +39,7 @@ select:focus {
 
 .btn {
     padding: 0.5em 1.4em;
+    font-size: 1.4rem;
     margin-right: 1em;
     cursor: pointer;
     border-radius: 8px;
@@ -48,4 +50,22 @@ select:focus {
     opacity: 0.5;
     pointer-events: none;
     color: currentColor;
+}
+
+.form {
+    background: white;
+    padding: 1em;
+    margin-top: 1rem;
+    width: 40rem;
+    border: 1px solid #3e3e3e;
+    border-radius: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+.form input,
+.form button {
+    font-size: 1.4rem;
 }

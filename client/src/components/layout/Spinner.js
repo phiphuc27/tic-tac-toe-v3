@@ -1,13 +1,20 @@
 import React from 'react';
-import spinner from './spinner.gif';
+import SpinnerBootstrap from 'react-bootstrap/Spinner';
 
 const Spinner = () => {
     return (
-        <div>
-            <img
-                src={spinner}
-                style={{ width: '200px', margin: 'auto', display: 'block' }}
-                alt='Loading...'
+        <div
+            style={{
+                height: '86vh',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
+        >
+            <SpinnerBootstrap
+                style={{ width: '100px', height: '100px' }}
+                variant='dark'
+                animation='border'
             />
         </div>
     );

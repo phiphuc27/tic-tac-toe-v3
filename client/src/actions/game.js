@@ -7,7 +7,6 @@ export const newGame = () => (dispatch) => {
 };
 
 export const clickSquare = (square, board) => (dispatch) => {
-    document.querySelectorAll('input[type=radio]').forEach((item) => (item.checked = false));
     dispatch({ type: CLICK_SQUARE, payload: square });
     const winner = getWinMoves(square, board);
     if (winner) {

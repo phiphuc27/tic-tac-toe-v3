@@ -31,11 +31,11 @@ router.post(
         passport.authenticate('login', async (err, user, info) => {
             try {
                 if (err || !user) {
-                    return res.status(400).json({ errors: [{ message: info.message }] });
+                    return res.status(400).json({ errors: [{ msg: info.message }] });
                 }
 
                 req.login(user, { session: false }, (err) => {
-                    if (err) return next(error);
+                    if (err) return res.status(400).json({ errors: [{ msg: info.message }] });
 
                     const payload = {
                         user: {
@@ -46,7 +46,7 @@ router.post(
                     return jwt.sign(
                         payload,
                         config.get('jwtSecret'),
-                        { expiresIn: 36000 },
+                        { expiresIn: 360000 },
                         (err, token) => {
                             if (err) throw err;
                             res.json({ token });

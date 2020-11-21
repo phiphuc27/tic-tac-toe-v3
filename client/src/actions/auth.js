@@ -7,12 +7,17 @@ import {
     LOGIN_FAIL,
     LOGIN_SUCCESS,
     LOGOUT,
+    USER_FETCHING,
+    REGISTER_START,
+    LOGIN_START,
 } from '../actions/type';
 import { setAlert } from './alert';
+import { getCurrentProfile } from './profile';
 import setAuthToken from '../utils/setAuthToken';
 
 // Load user
 export const loadUser = () => async (dispatch) => {
+    dispatch({ type: USER_FETCHING });
     if (localStorage.getItem('token')) {
         setAuthToken(localStorage.getItem('token'));
     }
@@ -24,6 +29,8 @@ export const loadUser = () => async (dispatch) => {
             type: USER_LOADED,
             payload: res.data,
         });
+
+        dispatch(getCurrentProfile());
     } catch (err) {
         dispatch({
             type: AUTH_ERROR,
@@ -32,14 +39,16 @@ export const loadUser = () => async (dispatch) => {
 };
 
 // Register user
-export const register = ({ email, password }) => async (dispatch) => {
+export const register = ({ username, email, password }) => async (dispatch) => {
+    dispatch({ type: REGISTER_START });
+
     const config = {
         headers: {
             'Content-Type': 'application/json',
         },
     };
 
-    const body = JSON.stringify({ email, password });
+    const body = JSON.stringify({ username, email, password });
 
     try {
         const res = await axios.post('/api/user', body, config);
@@ -51,7 +60,7 @@ export const register = ({ email, password }) => async (dispatch) => {
 
         dispatch(loadUser());
     } catch (err) {
-        const errors = err.response.data;
+        const { errors } = err.response.data;
 
         if (errors) {
             errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
@@ -65,6 +74,8 @@ export const register = ({ email, password }) => async (dispatch) => {
 
 // Login user
 export const login = ({ email, password }) => async (dispatch) => {
+    dispatch({ type: LOGIN_START });
+
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -83,7 +94,7 @@ export const login = ({ email, password }) => async (dispatch) => {
 
         dispatch(loadUser());
     } catch (err) {
-        const errors = err.response.data;
+        const { errors } = err.response.data;
 
         if (errors) {
             errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));

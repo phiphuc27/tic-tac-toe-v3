@@ -19,6 +19,7 @@ const BCRYPT_SALT_ROUNDS = 12;
 router.post(
     '/',
     [
+        check('username', 'Username is required!').not().isEmpty(),
         check('email', 'Please enter a valid email!').isEmail(),
         check('password', 'Password must be at least 6 characters!').isLength({ min: 6 }),
     ],
@@ -28,7 +29,7 @@ router.post(
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const { email, password } = req.body;
+        const { username, email, password } = req.body;
 
         try {
             let user = await User.findOne({ email });
@@ -48,6 +49,7 @@ router.post(
             );
 
             user = new User({
+                username,
                 email,
                 password,
             });
@@ -90,7 +92,7 @@ router.post(
 // @desc    Change user password
 // @access  Private
 router.put(
-    '/',
+    '/password',
     [
         passport.authenticate('jwt', { session: false }),
         [

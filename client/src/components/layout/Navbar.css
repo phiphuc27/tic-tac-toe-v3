@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.7rem 2rem;
+    padding: 0.7rem 5rem;
     position: fixed;
     z-index: 1;
     width: 100%;
@@ -30,9 +30,11 @@
     font-size: 1.6rem;
     display: flex;
     list-style: none;
+    margin-bottom: 0;
 }
 
 .navbar a {
+    text-decoration: none;
     color: #fff;
     padding: 0.45rem;
     margin: 0 1rem;
@@ -44,4 +46,91 @@
 
 .navbar .welcome span {
     margin-right: 0.6rem;
+}
+
+.account {
+    position: relative;
+}
+
+.account-info {
+    cursor: pointer;
+}
+
+.account-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #ffffff31;
+    object-fit: cover;
+}
+
+.account-info span {
+    margin: 0 0.5em;
+}
+
+.account-menu {
+    position: absolute;
+    top: 4rem;
+    right: -999px;
+    min-width: 170px;
+    padding: 1em;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transition: opacity 200ms ease-in;
+    opacity: 0;
+}
+
+.account-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 3rem;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    transform: rotate(45deg);
+}
+
+.account-menu::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: 0;
+    width: 100%;
+    height: 20px;
+    background-color: transparent;
+}
+
+.account:hover .account-menu {
+    opacity: 1;
+    right: 0;
+}
+
+.account-menu ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.account-menu li + li {
+    margin-top: 1em;
+}
+
+.account-menu li:last-child {
+    position: relative;
+}
+
+.account-menu li:last-child::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -0.5em;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.account-menu a {
+    color: black;
 }

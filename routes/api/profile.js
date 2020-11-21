@@ -12,7 +12,7 @@ const User = require('../../models/User');
 // @access  Private
 router.get('/me', passport.authenticate('jwt', { session: false }), async (req, res) => {
     try {
-        const profile = await Profile.findOne({ user: req.user.id });
+        const profile = await Profile.findOne({ user: req.user.id }).populate('user', ['username']);
 
         return res.json(profile);
     } catch (err) {
@@ -25,13 +25,14 @@ router.get('/me', passport.authenticate('jwt', { session: false }), async (req, 
 // @desc    Create or update profile
 // @access  Private
 router.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
-    const { firstName, lastName, gender, birthday, avatar } = req.body;
+    const { firstName, lastName, gender, birthday, bio, avatar } = req.body;
 
     const profileFields = {};
     if (firstName) profileFields.firstName = firstName;
     if (lastName) profileFields.lastName = lastName;
     if (gender) profileFields.gender = gender;
     if (birthday) profileFields.birthday = birthday;
+    if (bio) profileFields.bio = bio;
     if (avatar) profileFields.avatar = avatar;
 
     try {
@@ -39,7 +40,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
             { user: req.user.id },
             { $set: profileFields },
             { new: true }
-        );
+        ).populate('user', ['username']);
 
         return res.json(profile);
     } catch (err) {
@@ -53,7 +54,9 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
 // @access  Public
 router.get('/:user_id', async (req, res) => {
     try {
-        const profile = await Profile.findOne({ user: req.params.user_id });
+        const profile = await Profile.findOne({ user: req.params.user_id }).populate('user', [
+            'username',
+        ]);
 
         if (!profile) return res.status(400).json({ msg: 'Profile not found!' });
 
