@@ -7,9 +7,11 @@ import { loadUser } from './actions/auth';
 
 import './App.css';
 
+import PrivateRoute from './components/routing/PrivateRoute';
 import Navbar from './components/layout/Navbar';
 import Home from './components/layout/Home';
 import Game from './components/Game/';
+import Lobby from './components/Online/Lobby';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Profile from './components/profile/Profile';
@@ -33,6 +35,7 @@ function App({ loadUser }) {
                     <Route exact path='/register' component={Register} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/profile/:user_id' component={Profile} />
+                    <PrivateRoute exact path='/game/online' component={Lobby} />
                 </Switch>
             </div>
         </>

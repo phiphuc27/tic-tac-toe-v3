@@ -40,7 +40,6 @@ select:focus {
 .btn {
     padding: 0.5em 1.4em;
     font-size: 1.4rem;
-    margin-right: 1em;
     cursor: pointer;
     border-radius: 8px;
     transition-duration: 200ms;

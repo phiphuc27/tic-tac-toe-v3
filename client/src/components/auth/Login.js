@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect, Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Form, Button, Spinner } from 'react-bootstrap';
 import { login } from '../../actions/auth';
@@ -18,6 +18,8 @@ const Login = ({ auth: { loading, isAuthenticated, user }, login }) => {
 
     const { email, password } = formData;
 
+    const location = useLocation();
+
     const onChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -28,7 +30,8 @@ const Login = ({ auth: { loading, isAuthenticated, user }, login }) => {
         login({ email, password });
     };
 
-    if (isAuthenticated && user) return <Redirect to={`/profile/${user._id}`} />;
+    if (isAuthenticated && user)
+        return <Redirect to={location.state ? location.state.from : `/profile/${user._id}`} />;
 
     return (
         <div className='authenticate'>

@@ -8,10 +8,10 @@ import './index.css';
 import Board from './Board';
 import GameInfo from './GameInfo';
 
-const Game = () => {
+const Game = ({ newGame }) => {
     useEffect(() => {
         newGame();
-    }, []);
+    }, [newGame]);
 
     return (
         <div className='game'>

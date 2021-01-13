@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../logo.svg';
 
 import './Home.css';
@@ -14,12 +15,12 @@ const Home = () => {
                 </div>
             </div>
             <div className='hero__btn-group'>
-                <a href='/game' className='btn btn-hero'>
+                <Link to='/game' className='btn btn-hero'>
                     Play Offline
-                </a>
-                <a href='/game/online' className='btn btn-hero disabled'>
+                </Link>
+                <Link to='/game/online' className='btn btn-hero'>
                     Play Online
-                </a>
+                </Link>
             </div>
         </>
     );
