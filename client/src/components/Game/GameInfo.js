@@ -8,12 +8,12 @@ import './GameInfo.css';
 
 import History from './History';
 
-const GameInfo = ({ game: { winner, xTurn, history, squares, step }, newGame, moveJump }) => {
+const GameInfo = ({ game: { winner, isTurn, history, squares, step }, newGame, moveJump }) => {
     const [status, setStatus] = useState('');
 
     useEffect(() => {
         if (!winner) {
-            setStatus(`Next player: ${xTurn ? 'X' : 'O'}`);
+            setStatus(`Next player: ${isTurn ? 'X' : 'O'}`);
         } else {
             const { name } = winner;
             if (name === 'draw') {
@@ -22,7 +22,7 @@ const GameInfo = ({ game: { winner, xTurn, history, squares, step }, newGame, mo
                 setStatus(`Winner: ${name.toUpperCase()}`);
             }
         }
-    }, [winner, xTurn]);
+    }, [winner, isTurn]);
 
     return (
         <div className='info'>

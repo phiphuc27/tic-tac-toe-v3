@@ -5,7 +5,7 @@ const Spinner = () => {
     return (
         <div
             style={{
-                height: '86vh',
+                height: '20vh',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',

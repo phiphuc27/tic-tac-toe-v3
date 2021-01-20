@@ -26,3 +26,10 @@ export const PROFILE_FETCHING = 'PROFILE_FETCHING';
 export const GET_PROFILE = 'GET_PROFILE';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
+
+// Online
+export const FIND_PLAYER = 'FIND_PLAYER';
+export const START_GAME = 'START_GAME';
+export const SET_TURN = 'SET_TURN';
+export const ONLINE_CLEAR = 'ONLINE_CLEAR';
+export const ONLINE_ERROR = 'ONLINE_ERROR';

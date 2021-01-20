@@ -11,7 +11,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import Navbar from './components/layout/Navbar';
 import Home from './components/layout/Home';
 import Game from './components/Game/';
-import Lobby from './components/Online/Lobby';
+import Lobby from './components/Online/OnlineContainer';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Profile from './components/profile/Profile';

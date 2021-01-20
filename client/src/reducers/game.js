@@ -6,7 +6,7 @@ const initialState = {
     squares: Array(BOARD_SIZE).fill(Array(BOARD_SIZE).fill(null)),
     history: [],
     step: 0,
-    xTurn: true,
+    isTurn: true,
     winner: null,
 };
 
@@ -23,7 +23,7 @@ const reducer = (state = initialState, action) => {
                 ),
                 history: [...state.history.splice(0, state.step), payload],
                 step: (state.step += 1),
-                xTurn: !state.xTurn,
+                isTurn: !state.isTurn,
             };
         case SET_WINNER:
             return {
@@ -35,7 +35,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 squares: payload.board,
                 step: payload.step,
-                xTurn: payload.step % 2 === 0,
+                isTurn: payload.step % 2 === 0,
                 winner: null,
             };
         case NEW_GAME:
@@ -44,7 +44,7 @@ const reducer = (state = initialState, action) => {
                 squares: Array(BOARD_SIZE).fill(Array(BOARD_SIZE).fill(null)),
                 history: [],
                 step: 0,
-                xTurn: true,
+                isTurn: true,
                 winner: null,
             };
         default:
